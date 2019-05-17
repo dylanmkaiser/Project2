@@ -1,20 +1,20 @@
-## Project 2
+# Project 2
 
-## Topic: Entertainment & Sports
+# Topic: Entertainment & Sports
 
-# Group: Angie, Judy, Dylan
+## Group: Angie, Judy, Dylan
 
-# Our Idea
+## Our Idea
 
 We think that the Staples Center, located in downtown Los Angeles, is a hotspot for crime in Los Angeles. The influx of thousands of people from all over the world to a venue that hosts the Lakers, Clippers, Kings, and countless concerts seems like the type of place that would attract petty theft and other types of crime, as many of the people attending these events are not familiar with the areas surrounding the arena, and where to stay away from. Our goal would be to show that there are more crime events in the areas immediately surrounding the Staples Center, when compared to other areas within a 2-3 mile radius of the arena. 
 
-# How would we do this?
+## How would we do this?
 
 We have a data set from the city of LA that lists every crime event that has occurred from 2010 - Present. The data set has an API that we would call to find crime events in the locations surrounding the Staples Center specifically. The link is below.
 
 https://data.lacity.org/A-Safe-City/Crime-Data-from-2010-to-Present/y8tr-7khq
 
-# What are our visualizations?
+## What are our visualizations?
 
 Our goal would be to have three different visualizations to prove that the Staples Center either does or doesn’t have an effect on crime rates by bringing tens of thousands of people to events over the course of last year.
 
