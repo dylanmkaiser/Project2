@@ -24,7 +24,7 @@ Our goal would be to have three different visualizations to prove that the Stapl
 4. Another idea - We could compare the Staples Center to a couple of other venues in the LA area, and see if this is a trend, proving that entertainment & sports events do attract more crime than other areas that don’t have large venues.
 
 
-# Project 2
+## Project 2 Requirements
 
 Your task is to tell a story through data visualizations.
 Focus on providing users an interactive means to explore data themselves. 
@@ -33,7 +33,7 @@ You may choose a project of any theme, but we encourage you to think broadly.
 You will have ample time in class to work with your group, but expect to put in hours outside of class as well. 
 
 
-# Specific Requirements
+## Specific Requirements
 1. Your visualization must include a Python Flask–powered RESTful API, HTML/CSS, JavaScript, and at least one database (SQL, MongoDB, SQLite, etc.). 
 2. Your project should fall into one of the below four tracks: 
 - A custom "creative" D3.js project (i.e., a nonstandard graph or chart)
