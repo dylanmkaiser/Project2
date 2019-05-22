@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="eng">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title>Web Visualization</title>
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <!-- Latest compiled and minified CSS -->
+  <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css"
+    integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous"> -->
+  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css"
+    integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- Latest compiled and minified JavaScript -->
+  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"
+    integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+    crossorigin="anonymous"></script>
+
+</head>
+
+<body style="background-color:rgb(1, 1, 32)">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12">
+        <h1>Are popular arenas in the Los Angeles area correlated with higher crime rates in the immediate surrounding
+          areas?</h1>
+        <br>
+        <p>We think that the Staples Center, located in downtown Los Angeles, is a hotspot for crime in Los Angeles. The
+          influx of thousands of people from all over the world to a venue that hosts the Lakers, Clippers, Kings, and
+          countless concerts seems like the type of place that would attract petty theft and other types of crime, as
+          many
+          of the people attending these events are not familiar with the areas surrounding the arena, and where to stay
+          away from. Our goal would be to show that there are more crime events in the areas immediately surrounding the
+          Staples Center, when compared to other areas within a 2-3 mile radius of the arena.</p>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <div id="sc">Click the image to learn more about the Staples Center!</div>
+        <a href="https://www.staplescenter.com/about/about-staples-center" target="_blank">
+          <img class="img-thumbnail" src="{{ url_for('static', filename='images/staples.png') }}">
+        </a>
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-md-3 col-xs-12">
+        <div id = "viz" class="box">
+          <h4>Heatmap of Crime Incidents Surrounding the Arenas</h4>
+          <hr />
+          <a href="map_index.html" target="_blank">
+            <img class="img-thumbnail" src="#">
+          </a>
+        </div>
+      </div>
+
+
+      <div class="col-md-3 col-xs-12">
+        <div id="viz" class="box">
+          <h4>Scatter Plot: Distance from Arena vs. Crime Frequency</h4>
+          <hr />
+          <a href="#" target="_blank">
+            <img class="img-thumbnail" src="#">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-xs-12">
+        <div id="viz" class="box">
+          <h4>Histogram: Hour of day vs. Crime Frequency </h4>
+          <hr />
+          <a href="#" target="_blank">
+            <img class="img-thumbnail" src="#">
+          </a>
+        </div>
+      </div>
+
+      <div class="col-md-3 col-xs-12">
+        <div id="viz" class="box">
+          <h4>Results</h4>
+          <hr />
+          <a href="#">
+            <img class="img-thumbnail" src="#">
+          </a>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+</body>
+
+</html>
