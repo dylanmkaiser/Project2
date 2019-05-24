@@ -1,51 +1,17 @@
-// var heat_array = [];
+var heat_array = [];
 
-// function read_route(route) {
- 
-//   d3.json(route).then(function(data){
-//     for (var i = 0; i < data.length; i++) {
-//       heat_array.push(data[i]);
-//     }
-//   })
-// };
-
-// read_route("/staples_info");
-// read_route("/coliseum_info");
-// read_route("/dodger_info");
-
-
-function read_route(route, arr) {
+function read_route(route) {
  
   d3.json(route).then(function(data){
     for (var i = 0; i < data.length; i++) {
-      arr.push(data[i]);
+      heat_array.push(data[i]);
     }
   })
 };
 
-var sc = [];
-var col = [];
-var ds = [];
-
-read_route("/staples_info", sc);
-read_route("/coliseum_info", col);
-read_route("/dodger_info", ds);
-
-var sc_map = L.heatLayer(sc, {
-  radius: 20,
-  blur: 35
-});
-
-var col_map = L.heatLayer(col, {
-  radius: 20,
-  blur: 35
-});
-
-var ds_map = L.heatLayer(ds, {
-  radius: 20,
-  blur: 35
-});
-
+read_route("/staples_coords");
+read_route("/coliseum_coords");
+read_route("/dodger_coords");
 
 
 var arenas = [
@@ -70,10 +36,10 @@ for(var i=0; i <arenas.length; i++) {
 
 var arena_layer = L.layerGroup(arena_markers);
 
-// var heat = L.heatLayer(heat_array, {
-//   radius: 20,
-//   blur: 35
-// });
+var heat = L.heatLayer(heat_array, {
+  radius: 20,
+  blur: 35
+});
 
 
 var light = L.tileLayer("https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}", {
@@ -105,17 +71,14 @@ var baseMaps = {
 
 var overlayMaps = {
   Arenas: arena_layer,
-  StaplesCenter: sc_map,
-  Coliseum: col_map,
-  DodgerStadium: ds_map
-  // HeatMap: heat
+  HeatMap: heat
 };
 
 // Create map object and set default layers
 var myMap = L.map("map", {
   center: [34.0469, -118.2468],
   zoom: 13,
-  layers: [outdoors, sc_map, arena_layer]
+  layers: [outdoors, arena_layer, heat]
 });
 
 L.control.layers(baseMaps, overlayMaps).addTo(myMap);
