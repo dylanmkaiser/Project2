@@ -51,9 +51,9 @@ def distance (coords_1, coords_2):
     return value
 
 for i in range(len(crimes_filtered)):
-    for j in range(len(venues_df)):
-        venue_coords = (venues_df["latitude"][j], venues_df["longitude"][j])
-        venue_name = "dist_from_" + venues_df["venue"][j]
+    for j in range(len(venues)):
+        venue_coords = (venues["latitude"][j], venues["longitude"][j])
+        venue_name = "dist_from_" + venues["venue"][j]
         crime_coords = (crimes_filtered["latitude"][i], crimes_filtered["longitude"][i])
         crimes_filtered.loc[i, venue_name] = round(distance(venue_coords, crime_coords), 1)
 
