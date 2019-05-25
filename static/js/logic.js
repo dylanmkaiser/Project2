@@ -9,30 +9,39 @@ function read_route(route) {
   })
 };
 
-read_route("/staples_coords");
-read_route("/coliseum_coords");
-read_route("/dodger_coords");
+read_route("/crime_coords");
 
+// var arenas = [
+//   {name: "Staples Center",
+//   coordinates: [34.043018, -118.267258]
+//   },
+//   {name: "LA Memorial Coliseum",
+//   coordinates: [34.014053, -118.287872]
+//   },
+//   {name: "Dodger Stadium",
+//   coordinates: [34.073853, -118.239960]
+//   }
+// ]
 
-var arenas = [
-  {name: "Staples Center",
-  coordinates: [34.043018, -118.267258]
-  },
-  {name: "LA Memorial Coliseum",
-  coordinates: [34.014053, -118.287872]
-  },
-  {name: "Dodger Stadium",
-  coordinates: [34.073853, -118.239960]
-  }
-]
 
 arena_markers = [];
+// for (var i=0; i < arenas.length; i++) {
+//       arena_markers.push(L.marker(arenas[i].coordinates, {
+//         draggable: false,
+//       }).bindPopup("<h4>" + arenas[i].name + "</h4>"));
+// }
 
-for(var i=0; i <arenas.length; i++) {
-  arena_markers.push(L.marker(arenas[i].coordinates, {
-    draggable: false,
-  }).bindPopup("<h4>" + arenas[i].name + "</h4>"));
-}
+
+
+d3.json("/venue_coords").then(function(response){
+  for (var i=0; i < response.length; i++) {
+    var coords = [response[i].latitude, response[i].longitude];
+    arena_markers.push(L.marker(coords, {
+      draggable: false,
+    }).bindPopup("<h4>" + response[i].venue + "</h4>"));
+  }
+})
+
 
 var arena_layer = L.layerGroup(arena_markers);
 

@@ -5,11 +5,18 @@ USE crimes_db;
 
 -- Create tables for raw data to be loaded into
 -- DROP TABLE IF EXISTS;
-DROP TABLE IF EXISTS staples_center;
-DROP TABLE IF EXISTS coliseum;
-DROP TABLE IF EXISTS dodger_stadium;
+DROP TABLE IF EXISTS venues_df;
+DROP TABLE IF EXISTS crimes_updated;
 
-CREATE TABLE staples_center (
+CREATE TABLE venues_df (
+  id INT AUTO_INCREMENT,
+  venue VARCHAR(50),
+  latitude FLOAT,
+  longitude FLOAT,
+  PRIMARY KEY (id)
+);
+
+CREATE TABLE crimes_updated (
   id INT AUTO_INCREMENT,
   dr_number VARCHAR(16),
   date_reported DATE,
@@ -22,37 +29,7 @@ CREATE TABLE staples_center (
   latitude FLOAT,
   longitude FLOAT,
   dist_from_staples_center FLOAT,
-  PRIMARY KEY (id)
-);
-
-CREATE TABLE coliseum (
-  id INT AUTO_INCREMENT,
-  dr_number VARCHAR(16),
-  date_reported DATE,
-  date_occurred DATE,
-  time_occurred TIME,
-  area_id INT,
-  area_name VARCHAR(22),
-  crime_description VARCHAR(200),
-  address VARCHAR(100),
-  latitude FLOAT,
-  longitude FLOAT,
   dist_from_coliseum FLOAT,
-  PRIMARY KEY (id)
-);
-
-CREATE TABLE dodger_stadium (
-  id INT AUTO_INCREMENT,
-  dr_number VARCHAR(16),
-  date_reported DATE,
-  date_occurred DATE,
-  time_occurred TIME,
-  area_id INT,
-  area_name VARCHAR(22),
-  crime_description VARCHAR(200),
-  address VARCHAR(100),
-  latitude FLOAT,
-  longitude FLOAT,
   dist_from_dodger_stadium FLOAT,
   PRIMARY KEY (id)
 );

@@ -1,5 +1,7 @@
 import os
 
+from datetime import datetime
+
 import pandas as pd
 import numpy as np
 
@@ -21,7 +23,7 @@ app = Flask(__name__)
 dbname = "crimes_db"
 
 # connection to mysql
-app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql://{mysqlinfo['username']}:{mysqlinfo['password']}@{mysqlinfo['host']}:{mysqlinfo['port']}/{dbname}"
+app.config['SQLALCHEMY_DATABASE_URI'] = f"mysql+pymysql://{mysqlinfo['username']}:{mysqlinfo['password']}@{mysqlinfo['host']}:{mysqlinfo['port']}/{dbname}"
 
 db = SQLAlchemy(app)
 
@@ -31,9 +33,8 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 # Save references to each table
-staples_center = Base.classes.staples_center
-coliseum = Base.classes.coliseum
-dodger_stadium = Base.classes.dodger_stadium
+venues = Base.classes.venues_df
+crimes = Base.classes.crimes_updated
 
 @app.route("/")
 def index():
@@ -45,95 +46,93 @@ def map_index():
     """Return the heat map."""
     return render_template("map_index.html")
 
-# @app.route("/connect-to-api")
-# def anotherfunction():
-#     # Connect to the API, get any other data into the database, get it ready to get served
+@app.route("/line_index.html")
+def line_index():
+    """Return the heat map."""
+    return render_template("line_index.html")
 
-@app.route("/staples_coords")
-def staples_coords():
-    """Return coordinates."""
+@app.route("/venue_coords")
+def venue_coords():
 
-    # Use Pandas to perform the sql query
+    results = db.session.query(venues.latitude, venues.longitude, venues.venue).all()
+    coords_list = []
+    for result in results:
+        coords = {}
+        coords["latitude"] = result[0]
+        coords["longitude"] = result[1]
+        coords["venue"] = result[2]
+        coords_list.append(coords)
+
+    return jsonify(coords_list)
+
+@app.route("/crime_coords")
+def crime_coords():
     sel = [
-        staples_center.latitude,
-        staples_center.longitude
+        crimes.latitude,
+        crimes.longitude
     ]
-
     results = db.session.query(*sel).all()
 
     return jsonify(results)
 
-@app.route("/coliseum_coords")
-def coliseum_coords():
-    """Return coordinates."""
-
-    # Use Pandas to perform the sql query
+@app.route("/staples_crimes")
+def staples_crimes():
     sel = [
-        coliseum.latitude,
-        coliseum.longitude
+        crimes.date_occurred,
+        crimes.time_occurred,
+        crimes.dist_from_staples_center
     ]
 
-    results = db.session.query(*sel).all()
-
-    return jsonify(results)
-
-@app.route("/dodger_coords")
-def dodger_coords():
-    """Return coordinates."""
-
-    # Use Pandas to perform the sql query
-    sel = [
-        dodger_stadium.latitude,
-        dodger_stadium.longitude
-    ]
-
-    results = db.session.query(*sel).all()
-    
-    return jsonify(results)
-
-@app.route("/staples_info")
-def staples_info():
-
-    results = db.session.query(staples_center.date_occurred, staples_center.time_occurred, staples_center.dist_from_staples_center).all()
+    results = db.session.query(*sel).filter(crimes.dist_from_staples_center <= 1.5).all()
 
     staples_list = []
     for result in results:
-        staples_info = {}
-        staples_info["date_occurred"] = result[0]
-        # staples_info["time_occurred"] = result[1]
-        staples_info["dist_from_staples_center"] = result[2]
-        staples_list.append(staples_info)
+        staples_crime = {}
+        staples_crime["date_occurred"] = result[0].strftime("%m/%d/%Y")
+        staples_crime["time_occurred"] = result[1].strftime("%H:%M:%S")
+        staples_crime["dist_from_venue"] = result[2]
+        staples_list.append(staples_crime)
 
-    #print(col_info)
     return jsonify(staples_list)
 
-@app.route("/coliseum_info")
-def coliseum_info():
 
-    results = db.session.query(coliseum.date_occurred, coliseum.time_occurred, coliseum.dist_from_coliseum).all()
+@app.route("/coliseum_crimes")
+def coliseum_crimes():
+    sel = [
+        crimes.date_occurred,
+        crimes.time_occurred,
+        crimes.dist_from_coliseum
+    ]
 
-    col_list = []
+    results = db.session.query(*sel).filter(crimes.dist_from_coliseum <= 1.5).all()
+
+    coliseum_list = []
     for result in results:
-        col_info = {}
-        col_info["date_occurred"] = result[0]
-        # col_info["time_occurred"] = result[1]
-        col_info["dist_from_coliseum"] = result[2]
-        col_list.append(col_info)
+        coliseum_crime = {}
+        coliseum_crime["date_occurred"] = result[0].strftime("%m/%d/%Y")
+        coliseum_crime["time_occurred"] = result[1].strftime("%H:%M:%S")
+        coliseum_crime["dist_from_venue"] = result[2]
+        coliseum_list.append(coliseum_crime)
 
-    return jsonify(col_list)
+    return jsonify(coliseum_list)
 
-@app.route("/dodgers_info")
-def dodgers_info():
+@app.route("/dodger_crimes")
+def dodger_crimes():
+    sel = [
+        crimes.date_occurred,
+        crimes.time_occurred,
+        crimes.dist_from_dodger_stadium
+    ]
 
-    results = db.session.query(dodger_stadium.date_occurred, dodger_stadium.time_occurred, dodger_stadium.dist_from_dodger_stadium).all()
+    results = db.session.query(*sel).filter(crimes.dist_from_dodger_stadium <= 1.5).all()
 
     dodger_list = []
     for result in results:
-        dodger_info = {}
-        dodger_info["date_occurred"] = result[0]
-        # dodger_info["time_occurred"] = result[1]
-        dodger_info["dist_from_dodger_stadium"] = result[2]
-        dodger_list.append(dodger_info)
+        dodger_crime = {}
+        dodger_crime["date_occurred"] = result[0].strftime("%m/%d/%Y")
+        dodger_crime["time_occurred"] = result[1].strftime("%H:%M:%S")
+        dodger_crime["dist_from_venue"] = result[2]
+        dodger_list.append(dodger_crime)
 
     return jsonify(dodger_list)
 
