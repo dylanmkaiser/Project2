@@ -33,7 +33,7 @@ Base = automap_base()
 Base.prepare(db.engine, reflect=True)
 
 # Save references to each table
-venues = Base.classes.venues_df
+venues = Base.classes.venues
 crimes = Base.classes.crimes_updated
 
 @app.route("/")
@@ -48,7 +48,7 @@ def map_index():
 
 @app.route("/line_index.html")
 def line_index():
-    """Return the heat map."""
+    """Return the line plot."""
     return render_template("line_index.html")
 
 @app.route("/venue_coords")
@@ -94,7 +94,6 @@ def staples_crimes():
         staples_list.append(staples_crime)
 
     return jsonify(staples_list)
-
 
 @app.route("/coliseum_crimes")
 def coliseum_crimes():

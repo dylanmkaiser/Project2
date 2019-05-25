@@ -5,10 +5,10 @@ USE crimes_db;
 
 -- Create tables for raw data to be loaded into
 -- DROP TABLE IF EXISTS;
-DROP TABLE IF EXISTS venues_df;
+DROP TABLE IF EXISTS venues;
 DROP TABLE IF EXISTS crimes_updated;
 
-CREATE TABLE venues_df (
+CREATE TABLE venues (
   id INT AUTO_INCREMENT,
   venue VARCHAR(50),
   latitude FLOAT,

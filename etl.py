@@ -40,11 +40,11 @@ crimes_filtered = crimes_filtered.rename(columns={"DR Number": "dr_number", "Dat
     "Area Name": "area_name", "Crime Code Description": "crime_description", "Address": "address", "Latitude": "latitude", "Longitude": "longitude"})
 
 
-venues_df = pd.DataFrame([
+venues = pd.DataFrame([
     {"venue": "staples_center", "latitude": 34.043018, "longitude": -118.267258},
     {"venue": "coliseum", "latitude": 34.014053, "longitude": -118.287872},
     {"venue": "dodger_stadium", "latitude": 34.073853 , "longitude": -118.239960}])
-venues_df = venues_df[["venue", "latitude", "longitude"]]
+venues = venues[["venue", "latitude", "longitude"]]
 
 #Function that calculates distance between two coordinates
 def distance (coords_1, coords_2):
@@ -70,7 +70,7 @@ rds_connection_string = f"{config.mysqlinfo['username']}:{config.mysqlinfo['pass
 engine = create_engine(f'mysql://{rds_connection_string}')
 
 # Upload table 1 info
-venues_df.to_sql(name='venues_df', con=engine, if_exists='append', index=False)
+venues.to_sql(name='venues', con=engine, if_exists='append', index=False)
 
 # Upload table 2 info
 crimes_updated.to_sql(name='crimes_updated', con=engine, if_exists='append', index=False)

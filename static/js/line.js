@@ -36,8 +36,4 @@ Object.entries(staples_crime_frequency).forEach(([key, value]) => {
     y.push(value);
 });
 
-console.log(x);
-console.log(y); 
-
-
 
