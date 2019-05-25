@@ -1,43 +1,50 @@
-function counter(route, crimeFrequency) {
-    d3.json(route).then(function (data) {
 
-        for (var i = 0; i < data.length; i++) {
-            var currentCrime = data[i].dist_from_venue;
-            // If the crime has been seen before...
-            if (currentCrime in crimeFrequency) {
-                // Add one to the counter
-                crimeFrequency[currentCrime] += 1;
-            }
-            else {
-                // Set the counter at 1
-                crimeFrequency[currentCrime] = 1;
-            }
+function group_by_distance(data) {
+    var output = {};
+    for (var i = 0; i < data.length; i++) {
+        var currentCrime = data[i].dist_from_venue;
+        // If the crime has been seen before...
+        if (currentCrime in output) {
+            // Add one to the counter
+            output[currentCrime] += 1;
         }
-    })
+        else {
+            // Set the counter at 1
+            output[currentCrime] = 1;
+        }
+    }
+
+    return output;
 }
 
-var staples_crime_frequency = {};
-var coliseum_crime_frequency = {};
-var dodger_crime_frequency = {};
+function split_key_values(obj) {
+    var output = {
+        x: [],
+        y: []
+    };
 
-counter("/staples_crimes", staples_crime_frequency);
-counter("/coliseum_crimes", coliseum_crime_frequency);
-counter("/dodger_crimes", dodger_crime_frequency);
+    Object.entries(obj).forEach(([key, value]) => {
+        output.x.push(key);
+        output.y.push(value);
+    });
 
-console.log(staples_crime_frequency);
-console.log(coliseum_crime_frequency);
-console.log(dodger_crime_frequency);
+    return output;
+}
 
 
-var x = [];
-var y = [];
-Object.entries(staples_crime_frequency).forEach(([key, value]) => {
-    x.push(key);
-    y.push(value);
+d3.json("/staples_crimes").then(function (data) {
+    var staples_data = split_key_values(group_by_distance(data));
+    console.log(staples_data);
+    d3.json("/coliseum_crimes").then(function (data) {
+        var coliseum_data = split_key_values(group_by_distance(data));
+        console.log(coliseum_data);
+        var coliseum_crime_frequency = split_key_values(data);
+        d3.json("/dodger_crimes").then(function (data) {
+            var dodger_data = split_key_values(group_by_distance(data));
+            console.log(dodger_data);
+        });
+    });
 });
-
-console.log(x);
-console.log(y); 
 
 
 
