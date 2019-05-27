@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>Table</title>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.9.2/d3.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css">
+    <link rel="stylesheet" href="../static/css/table_style.css">
+</head>
+<body>
+    <div class="wrapper">
+            <div class="text-center">
+                <h1>Reported Crimes</h1>
+                <p>See when and where crimes occured.</p>
+            </div>
+            <div class="container">
+                <div class="row margin-top-50">
+                <div class="col-md-2">
+                    <aside class="filters">
+                    <div class="panel panel-default">
+                        <div class="panel-heading">Filter Search</div>
+                        <div class="panel-body">
+                        <form>
+                            <div class="form-group">
+                            <ul class="list-group" id="filters">
+                                <li class="filter list-group-item">
+                                <label for="date">Enter a Date</label>
+                                <input class="form-control" id="date" type="text" placeholder="1/11/2011">
+                                </li>
+                                <li class="filter list-group-item">
+                                <label for="time">Enter a Time</label>
+                                <input class="form-control" id="time" type="text" placeholder="hh:mm:ss">
+                                </li>
+                                <li class="filter list-group-item">
+                                <label for="area">Enter an Area</label>
+                                <input class="form-control" id="area" type="text" placeholder="Enter an Area">
+                                </li>
+                                <li class="filter list-group-item">
+                                <label for="description">Enter a Crime Description</label>
+                                <input class="form-control" id="description" type="text" placeholder="Enter Crime">
+                                </li>
+                                <li class="filter list-group-item">
+                                <label for="staplesdist">Enter Distance From Staples Center</label>
+                                <input class="form-control" id="staplesdist" type="text" placeholder="ex: 1.1">
+                                </li>
+                                <li class="filter list-group-item">
+                                <label for="coliseumdist">Enter Distance From The Coliseum</label>
+                                <input class="form-control" id="coliseumdist" type="text" placeholder="ex: 1.1">
+                                </li>
+                                <li class="filter list-group-item">
+                                <label for="dodgerdist">Enter Distance From Dodger Stadium</label>
+                                <input class="form-control" id="dodgerdist" type="text" placeholder="ex: 1.1">
+                                </li>
+                            </ul>
+                            </div>
+                            <button id="filter-btn" type="submit" class="btn btn-default">Filter Table</button>
+                        </form>
+                        </div>
+                    </div>
+                    </aside>
+                </div>
+                <div class="col-md-10">
+                    <div id="table-area" class="">
+                        <table id="table" class="table table-striped">
+                            <thead>
+                                <tr>
+                                    <th class="table-head">Date</th>
+                                    <th class="table-head">Time</th>
+                                    <th class="table-head">Area</th>
+                                    <th class="table-head">Crime Description</th>
+                                    <th class="table-head">Dist. From Staples Center</th>
+                                    <th class="table-head">Dist. From The Coliseum</th>
+                                    <th class="table-head">Dist. From Dodger Stadium</th>
+                                </tr>
+                            </thead>
+                            <tbody></tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+    <script src="{{ url_for('static', filename='js/table.js') }}"></script>
+</body>
+</html>

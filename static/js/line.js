@@ -26,7 +26,7 @@ function split_key_values(obj) {
         output.x.push(key);
         output.y.push(value);
     });
-    output.x.sort();
+    //output.x.sort();
     return output;
 }
 
@@ -46,7 +46,7 @@ d3.json("/staples_crimes").then(function (data) {
             y: coliseum_data.y,
             type: "scatter"
            };
-        var coliseum_crime_frequency = split_key_values(data);
+        // var coliseum_crime_frequency = split_key_values(data);
         d3.json("/dodger_crimes").then(function (data) {
             var dodger_data = split_key_values(group_by_distance(data));
             console.log(dodger_data);
@@ -58,8 +58,6 @@ d3.json("/staples_crimes").then(function (data) {
 
     var line_data = [trace1,trace2,trace3];
 
-    // Note that we omitted the layout object this time
-    // This will use default parameters for the layout
     Plotly.newPlot("plot", line_data);
         });
     });

@@ -15,6 +15,8 @@ from flask_sqlalchemy import SQLAlchemy
 from config import mysqlinfo
 
 app = Flask(__name__)
+app.config['JSON_SORT_KEYS'] = False
+
 
 # Database Setup
 #################################################
@@ -51,6 +53,11 @@ def line_index():
     """Return the line plot."""
     return render_template("line_index.html")
 
+@app.route("/table_index.html")
+def table_index():
+    """Return the table."""
+    return render_template("table_index.html")
+
 @app.route("/venue_coords")
 def venue_coords():
 
@@ -83,7 +90,7 @@ def staples_crimes():
         crimes.dist_from_staples_center
     ]
 
-    results = db.session.query(*sel).filter(crimes.dist_from_staples_center <= 1.5).all()
+    results = db.session.query(*sel).filter(crimes.dist_from_staples_center <= 1.5).order_by(crimes.dist_from_staples_center.asc()).all()
 
     staples_list = []
     for result in results:
@@ -103,7 +110,7 @@ def coliseum_crimes():
         crimes.dist_from_coliseum
     ]
 
-    results = db.session.query(*sel).filter(crimes.dist_from_coliseum <= 1.5).all()
+    results = db.session.query(*sel).filter(crimes.dist_from_coliseum <= 1.5).order_by(crimes.dist_from_coliseum.asc()).all()
 
     coliseum_list = []
     for result in results:
@@ -123,7 +130,7 @@ def dodger_crimes():
         crimes.dist_from_dodger_stadium
     ]
 
-    results = db.session.query(*sel).filter(crimes.dist_from_dodger_stadium <= 1.5).all()
+    results = db.session.query(*sel).filter(crimes.dist_from_dodger_stadium <= 1.5).order_by(crimes.dist_from_dodger_stadium.asc()).all()
 
     dodger_list = []
     for result in results:
@@ -134,6 +141,34 @@ def dodger_crimes():
         dodger_list.append(dodger_crime)
 
     return jsonify(dodger_list)
+
+@app.route("/table")
+def table():
+    sel = [
+        crimes.date_occurred,
+        crimes.time_occurred,
+        crimes.area_name,
+        crimes.crime_description,
+        crimes.dist_from_staples_center,
+        crimes.dist_from_coliseum,
+        crimes.dist_from_dodger_stadium
+    ]
+
+    results = db.session.query(*sel).all()
+
+    table_list = []
+    for result in results:
+        table_values = {}
+        table_values["date"] = result[0].strftime("%m/%d/%Y")
+        table_values["time"] = result[1].strftime("%H:%M:%S")
+        table_values["area"] = result[2]
+        table_values["description"] = result[3]
+        table_values["staplesdist"] = result[4]
+        table_values["coliseumdist"] = result[5]
+        table_values["dodgerdist"] = result[6]
+        table_list.append(table_values)
+
+    return jsonify(table_list)
 
 if __name__ == "__main__":
     app.run()
