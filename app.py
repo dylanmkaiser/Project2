@@ -163,9 +163,9 @@ def table():
         table_values["time"] = result[1].strftime("%H:%M:%S")
         table_values["area"] = result[2]
         table_values["description"] = result[3]
-        table_values["staplesdist"] = result[4]
-        table_values["coliseumdist"] = result[5]
-        table_values["dodgerdist"] = result[6]
+        table_values["staplesdist"] = str(result[4])
+        table_values["coliseumdist"] = str(result[5])
+        table_values["dodgerdist"] = str(result[6])
         table_list.append(table_values)
 
     return jsonify(table_list)
