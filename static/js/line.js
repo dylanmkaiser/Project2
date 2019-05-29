@@ -1,7 +1,7 @@
 function group_by_distance(data) {
     var output = {};
     for (var i = 0; i < data.length; i++) {
-        var currentCrime = data[i].dist_from_venue;
+        var currentCrime = +data[i].dist_from_venue;
         // If the crime has been seen before...
         if (currentCrime in output) {
             // Add one to the counter
@@ -12,7 +12,6 @@ function group_by_distance(data) {
             output[currentCrime] = 1;
         }
     }
-
     return output;
 }
 
@@ -22,11 +21,14 @@ function split_key_values(obj) {
         y: []
     };
 
-    Object.entries(obj).forEach(([key, value]) => {
-        output.x.push(key);
-        output.y.push(value);
+    var sorted = Object.keys(obj);
+    sorted = sorted.sort();
+
+    sorted.forEach((key) => {
+        output.x.push(+key);
+        output.y.push(obj[key])
     });
-    //output.x.sort();
+    
     return output;
 }
 
