@@ -1,3 +1,8 @@
+* {
+  box-sizing: border-box;
+  font-family: "Arial Black", sans-serif;
+}
+
 html,
 body {
   height: 100%;
@@ -11,7 +16,7 @@ body {
   min-height: 100%;
   padding-bottom: 130px;
   overflow: auto;
-  background: darkslategrey;
+  backdrop-filter: brightness(70%);
 }
 
 .navbar {
@@ -56,6 +61,34 @@ select {
 
 .margin-top-50 {
   margin-top: 50px;
+}
+
+/* The styles for the parallax */
+.hero {
+  position: relative;
+  height: 625px;
+  padding: 20px;
+  margin: 0;
+  background: black;
+  background-image: url("../images/skyline.jpg");
+  /* background-attachment: fixed; */
+  background-position: top center;
+  background-size: cover;
+}
+
+.hero h1 {
+  margin-top: 200px;
+  font-size: 28rem;
+  text-align: center;
+  animation: title 1.2s forwards linear;
+}
+
+.hero p {
+  font-size: 4rem;
+  opacity: 1;
+  text-align: center;
+  animation: subtitle 1.2s forwards linear;
+  animation-delay: 1.2s;
 }
 
 /* input placeholder color changes */
@@ -125,5 +158,42 @@ select {
     font-weight: bold;
     text-align: center;
     content: attr(data-th);
+  }
+
+  .hero h1 {
+    animation: smaller-title 1.2s forwards linear;
+  }
+}
+
+/* keyframe animations which will be used to animate the title */
+@keyframes title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 7.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes smaller-title {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    font-size: 5.5rem;
+    opacity: 1;
+  }
+}
+
+@keyframes subtitle {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
   }
 }

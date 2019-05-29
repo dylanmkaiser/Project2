@@ -1,14 +1,14 @@
-var arena_layer;
+var venue_layer;
 
 d3.json("/venue_coords").then(function(response){
-  var arena_markers = [];
+  var venue_markers = [];
   for (var i=0; i < response.length; i++) {
     var coords = [response[i].latitude, response[i].longitude];
-    arena_markers.push(L.marker(coords, {
+    venue_markers.push(L.marker(coords, {
       draggable: false,
     }).bindPopup("<h4>" + response[i].venue + "</h4>"));
   }
-  arena_layer = L.layerGroup(arena_markers);
+  venue_layer = L.layerGroup(venue_markers);
 })
 
 
@@ -55,7 +55,7 @@ function read_route(route) {
     };
     
     var overlayMaps = {
-      Arenas: arena_layer,
+      Venues: venue_layer,
       HeatMap: heat
     };
     
@@ -63,7 +63,7 @@ function read_route(route) {
     var myMap = L.map("map", {
       center: [34.0469, -118.2468],
       zoom: 13,
-      layers: [outdoors, heat, arena_layer]
+      layers: [outdoors, heat, venue_layer]
     });
     
     L.control.layers(baseMaps, overlayMaps).addTo(myMap);
