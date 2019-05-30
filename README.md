@@ -13,6 +13,7 @@ This is due to multiple factors. Many fans and tourists carry large sums of mone
 We hypothesized that there are more reported crime events in areas immediately surrounding the three venues when compared to other areas within a 1.5 mile radius of each respective Los Angeles venue. We used reported crime data from the LAPD to conduct our research.
 
 * https://popcenter.asu.edu/content/crimes-against-tourists-0
+
 ** http://www.flanderstoday.eu/stadiums-and-crime-go-hand-hand-say-ghent-researchers
 
 ## How did we do this?
