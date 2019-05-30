@@ -8,13 +8,13 @@
 
 The Staples Center, The Coliseum and Dodgers Stadium, all located within the Downtown Los Angeles vicinity, combined host hundreds of events yearly. Home to some of the most iconic teams in their sports and concerts for Grammy-winning artists, these venues attract thousands of people from all over the world. We believe that these popular arenas would attract lots of crimes, such as petty theft, due to the influx of visitors and tourists.
 
-This is due to multiple factors. Many fans and tourists carry large sums of money or other valuables. Also, especially tourists, are vulnerable because they are more likely to be relaxed and off guard while on vacation*. Other studies show that stadiums can lead to an increase in crimes, not necessarily on days of events, but on days that do not have events, when security and police surveillance is lowered. This is because stadiums bring many new people into a neighborhood, and allow criminals in crowds to spot possible targets, which they can act on at a later time**.
+This is due to multiple factors. Many fans and tourists carry large sums of money or other valuables. Also, especially tourists, are vulnerable because they are more likely to be relaxed and off guard while on vacation (1). Other studies show that stadiums can lead to an increase in crimes, not necessarily on days of events, but on days that do not have events, when security and police surveillance is lowered. This is because stadiums bring many new people into a neighborhood, and allow criminals in crowds to spot possible targets, which they can act on at a later time (2).
 
 We hypothesized that there are more reported crime events in areas immediately surrounding the three venues when compared to other areas within a 1.5 mile radius of each respective Los Angeles venue. We used reported crime data from the LAPD to conduct our research.
 
-* https://popcenter.asu.edu/content/crimes-against-tourists-0
+(1) https://popcenter.asu.edu/content/crimes-against-tourists-0
 
-** http://www.flanderstoday.eu/stadiums-and-crime-go-hand-hand-say-ghent-researchers
+(2) http://www.flanderstoday.eu/stadiums-and-crime-go-hand-hand-say-ghent-researchers
 
 ## How did we do this?
 
