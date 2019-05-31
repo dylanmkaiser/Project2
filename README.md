@@ -4,29 +4,33 @@
 
 ## Group: Angie, Judy, Dylan
 
-## Our Idea
+## Introduction
 
-We think that the Staples Center, Dodger Stadium and the Los Angeles Memorial Coliseum, located in the Los Angeles area, are hotspots for crime. The influx of thousands of people from all over the world to venues that host the Lakers, Clippers, Kings, and countless concerts seem like the type of place that would attract petty theft and other types of crime, as many of the people attending these events are not familiar with the areas surrounding the arena, and where to stay away from. Our goal would be to show that there are more crime incidents in the areas immediately surrounding the three venues, when compared to other areas within a 1.5 mile radius of the venues.
+The Staples Center, The Coliseum and Dodgers Stadium, all located within the Downtown Los Angeles vicinity, combined host hundreds of events yearly. Home to some of the most iconic teams in their sports and concerts for Grammy-winning artists, these venues attract thousands of people from all over the world. We believe that these popular arenas would attract lots of crimes, such as petty theft, due to the influx of visitors and tourists.
 
-* NOTE: We are analyzing all crimes that occurred between June 1st, 2018 and December 31st, 2018. 
+This is due to multiple factors. Many fans and tourists carry large sums of money or other valuables. Also, especially tourists, are vulnerable because they are more likely to be relaxed and off guard while on vacation (1). Other studies show that stadiums can lead to an increase in crimes, not necessarily on days of events, but on days that do not have events, when security and police surveillance is lowered. This is because stadiums bring many new people into a neighborhood, and allow criminals in crowds to spot possible targets, which they can act on at a later time (2).
 
-## How would we do this?
+We hypothesized that there are more reported crime events in areas immediately surrounding the three venues when compared to other areas within a 1.5 mile radius of each respective Los Angeles venue. We used reported crime data from the LAPD to conduct our research.
 
-We have a data set from the city of LA that lists every crime that occurred in 2018. The link is below.
+(1) https://popcenter.asu.edu/content/crimes-against-tourists-0
+
+(2) http://www.flanderstoday.eu/stadiums-and-crime-go-hand-hand-say-ghent-researchers
+
+## How did we do this?
+
+We used reported crime data from the LAPD to conduct our research. We analyzed all crimes that occurred between June 1st, 2018 and December 31st, 2018. The link to the data source is below:
 
 https://data.lacity.org/A-Safe-City/2018-Crime/cg5b-sjhs
 
 ## What are our visualizations?
 
-Our goal would be to have three different visualizations to prove that all three venues either do or do not have an impact on crime rates.
+We created three different visualizations to help us either prove or disprove that all three venues have an impact on crime rates in their surrounding areas.
 
     1. A heat map of all crime incidents in the last 6 months of 2018 within a 1.5 mile radius of each venue.
     2. A plot with 3 lines, one for each venue, that plots the crime count by distance from each venue.
     3. An interactive table that allows users to filter crimes by date, time, etc.
 
-* NOTE: All distances are measured in miles.
-* NOTE: All distances are rounded to the nearest tenth.
-
+* NOTE: All distances are measured in miles, and rounded to the nearest tenth.
 
 ## mySQL Tables
 
