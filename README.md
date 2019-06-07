@@ -18,7 +18,7 @@ We hypothesized that there are more reported crime events in areas immediately s
 
 ## How did we do this?
 
-We used reported crime data from the LAPD to conduct our research. We analyzed all crimes that occurred between June 1st, 2018 and December 31st, 2018. The link to the data source is below:
+We used reported crime data from the LAPD to conduct our research. We analyzed all crimes that occurred between June 1st, 2018 and December 31st,2018. The link to the data source is below:
 
 https://data.lacity.org/A-Safe-City/2018-Crime/cg5b-sjhs
 
