@@ -70,8 +70,8 @@ d3.json("/staples_crimes").then(function (data) {
                };
 
     var layout = {
-        title: "Crime Count vs. Distance, by Venue",
-        xaxis: { title: "Distance from Venue (mi)"},
+        title: "Crime Count vs. Distance, by Arena",
+        xaxis: { title: "Distance from Arena (mi)"},
         yaxis: { title: "Number of Crimes"}
     };
 
